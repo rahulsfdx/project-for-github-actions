@@ -10,6 +10,7 @@
         </button>
       </div>
     <% } %>
+
     <% if(messages.error != '' && messages.error){ %>
       <div class="alert alert-warning alert-dismissible fade show" role="alert">
         <%= messages.error %>
@@ -17,6 +18,18 @@
         </button>
       </div>
     <% } %>
+    
+    <% if(messages.alerts != '' && messages.alerts){ %>
+      <% messages.alerts.forEach(function(err){ %>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <%= err.msg %>
+          <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+          </button>
+        </div>
+      <% }) %>
+    <% } %>
+
+
     
     <div class="col-md-6">
       <label for="firstName" class="form-label">First Name</label>
@@ -37,8 +50,7 @@
     </div>
     <div class="col-md-6">
       <label for="gender" class="form-label">Gender</label>
-      <select id="gender" name="gender" class="form-select">
-        <option selected>Choose...</option>
+      <select id="gender" name="gender" class="form-select" placeholder="Select Gender">
         <option>Male</option>
         <option>Female</option>
         <option>Other</option>
